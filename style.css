@@ -311,66 +311,11 @@ nav ul li a:hover {
     color: #333;
 }
 
-.contact-info {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #555;
-    position: relative;
-}
-
 /* Clickable contact links */
 .contact-link {
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-}
-
-/* Vertical Contact Links Container */
-.contact-links-vertical {
-    display: flex;
-    flex-direction: row;  /* Stack vertically */
-    align-items: center;     /* Center horizontally */
-    gap: 50px;               /* Space between email and phone */
-    margin-bottom: 10px;
-}
-
-/* Clickable contact links */
-.contact-link {
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.contact-info {
-    font-size: 18px;
-    color: #555;
-    margin: 0;  /* Remove default margin */
-    padding: 5px 0;
-    transition: color 0.3s ease;
-    position: relative;
-    cursor: pointer;
-}
-
-/* Hover effect - using your gold color */
-.contact-link:hover .contact-info {
-    color: #e6a84f;
-    transform: translateY(-2px);
-}
-
-/* Optional: Add underline animation on hover */
-.contact-link .contact-info::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #e6a84f;
-    transition: width 0.3s ease;
-}
-
-.contact-link:hover .contact-info::after {
-    width: 100%;
 }
 
 /* Social Icons */
@@ -388,28 +333,23 @@ nav ul li a:hover {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #e6a84f;
-    border-radius: 50%;
     color: #333;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .social-icon i {
-    font-size: 22px;
+    font-size: 32px;
 }
 
 .social-icon:hover {
-    background: #e6a84f;
-    color: white;
+    color:  #e6a84f;
     transform: translateY(-3px);
 }
 
 .bottom-Logo img {
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    bottom: 100px;
     transform: translateX(-50%); /* Precise center adjustment */
     width: 300px;
 }
