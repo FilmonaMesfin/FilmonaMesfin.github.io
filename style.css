@@ -906,10 +906,39 @@ nav ul li a:hover {
     }
     
     .about-content {
-        padding-left: 0;
-        text-align: center;
+        text-align: center; /* Center align on mobile */
+        padding-left: 10px;  /* Reduce left padding */
+        padding-right: 10px; /* Add right padding */
+        max-width: 100%;
     }
     
+    .about-content h2 {
+        font-size: 36px; /* Smaller font for mobile */
+        font-weight: 500;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .about-content p {
+        font-size: 15px; /* Smaller text for mobile */
+        line-height: 1.6;
+        margin-bottom: 15px;
+        text-align: left; /* or center if you prefer */
+    }
+
+    .quote {
+        font-size: 18px;
+        margin: 20px 0;
+        text-align: center; /* Center the quote */
+        font-style: italic;
+    }
+
+    .about-sub {
+        font-size: 20px; /* Smaller than desktop */
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
     .Logo-Big {
         right: 0;
         margin-top: 40px;
@@ -938,6 +967,19 @@ nav ul li a:hover {
     
     .contact-content h2 {
         font-size: 24px;
+    }
+
+    .about-content h2 {
+        font-size: 32px; /* Even smaller for very small phones */
+    }
+
+    .about-sub {
+        font-size: 18px;
+    }
+
+    .about-content p {
+        font-size: 15px;
+        line-height: 1.5;
     }
 }
 
