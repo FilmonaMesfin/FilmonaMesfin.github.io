@@ -33,21 +33,127 @@
      <section class="Category-section">
         <div class="Category-container">
             <!-- Category Title -->
-            <h1 class="category-title">Gallery</h1>
+            <h1 class="category-title">Pavillion</h1>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_1.jpg" alt="Image 5">
+            </div>
         <div class="image-grid">
             <!-- These will automatically flow: image1,3,5 in left column, image2,4,6 in right column -->
     
             <div class="grid-item">
-                <img src="Image/Architecture/Gallery_1.jpg" alt="Image 5">
+                <img src="Image/Architecture/Gallery.jpg" alt="Image 7">
             </div>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_7.jpg" alt="Image 7">
+            </div>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_8.jpg" alt="Image 7">
+            </div>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_4.jpg" alt="Image 7">
+            </div>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_5.jpg" alt="Image 7">
+            </div>
+
+            <div class="grid-item">
+                <img src="Image/Architecture/Gallery_6.jpg" alt="Image 7">
+            </div>
+
             <div class="grid-item">
                 <img src="Image/Architecture/Gallery_2.jpg" alt="Image 6">
             </div>
-            <div class="grid-item">
-                <img src="Image/Architecture/Gallery_3.jpg" alt="Image 7">
-            </div>
+        </div>     
+    </div>
+</section>
+
+<!-- Lightbox Modal HTML -->
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <a class="modal-prev" id="modalPrev">&#10094;</a>
+    <a class="modal-next" id="modalNext">&#10095;</a>
+    <img class="modal-content" id="modalImage">
     
 </div>
-    </section>
+
+<script>
+// Get the modal
+var modal = document.getElementById('imageModal');
+var modalImg = document.getElementById('modalImage');
+var modalCaption = document.getElementById('modalCaption');
+var closeBtn = document.querySelector('.close-modal');
+
+// Get all grid images
+var images = document.querySelectorAll('.grid-item img');
+var currentIndex = 0;
+
+// Store all image sources and alts
+var imageSources = [];
+var imageAlts = [];
+
+images.forEach(function(img, index) {
+    imageSources.push(img.src);
+    imageAlts.push(img.alt || 'Gallery Image');
+    
+    // Add click event to each image
+    img.onclick = function() {
+        currentIndex = index;
+        openModal(this.src, this.alt);
+    }
+});
+
+// Function to open modal
+function openModal(src, alt) {
+    modal.style.display = "block";
+    modalImg.src = src;
+    modalCaption.innerHTML = alt;
+}
+
+// Close modal when clicking X
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close modal when clicking outside the image
+modal.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Previous button
+document.getElementById('modalPrev').onclick = function() {
+    currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+    modalImg.src = imageSources[currentIndex];
+    modalCaption.innerHTML = imageAlts[currentIndex];
+}
+
+// Next button
+document.getElementById('modalNext').onclick = function() {
+    currentIndex = (currentIndex + 1) % imageSources.length;
+    modalImg.src = imageSources[currentIndex];
+    modalCaption.innerHTML = imageAlts[currentIndex];
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(event) {
+    if (modal.style.display === "block") {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        } else if (event.key === "ArrowLeft") {
+            document.getElementById('modalPrev').click();
+        } else if (event.key === "ArrowRight") {
+            document.getElementById('modalNext').click();
+        }
+    }
+});
+</script>
+
+
 </body>
 </html>

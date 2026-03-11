@@ -58,5 +58,89 @@
     
 </div>
     </section>
+
+<!-- Lightbox Modal HTML -->
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <a class="modal-prev" id="modalPrev">&#10094;</a>
+    <a class="modal-next" id="modalNext">&#10095;</a>
+    <img class="modal-content" id="modalImage">
+    
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('imageModal');
+var modalImg = document.getElementById('modalImage');
+var modalCaption = document.getElementById('modalCaption');
+var closeBtn = document.querySelector('.close-modal');
+
+// Get all grid images
+var images = document.querySelectorAll('.grid-item img');
+var currentIndex = 0;
+
+// Store all image sources and alts
+var imageSources = [];
+var imageAlts = [];
+
+images.forEach(function(img, index) {
+    imageSources.push(img.src);
+    imageAlts.push(img.alt || 'Gallery Image');
+    
+    // Add click event to each image
+    img.onclick = function() {
+        currentIndex = index;
+        openModal(this.src, this.alt);
+    }
+});
+
+// Function to open modal
+function openModal(src, alt) {
+    modal.style.display = "block";
+    modalImg.src = src;
+    modalCaption.innerHTML = alt;
+}
+
+// Close modal when clicking X
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close modal when clicking outside the image
+modal.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Previous button
+document.getElementById('modalPrev').onclick = function() {
+    currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+    modalImg.src = imageSources[currentIndex];
+    modalCaption.innerHTML = imageAlts[currentIndex];
+}
+
+// Next button
+document.getElementById('modalNext').onclick = function() {
+    currentIndex = (currentIndex + 1) % imageSources.length;
+    modalImg.src = imageSources[currentIndex];
+    modalCaption.innerHTML = imageAlts[currentIndex];
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(event) {
+    if (modal.style.display === "block") {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        } else if (event.key === "ArrowLeft") {
+            document.getElementById('modalPrev').click();
+        } else if (event.key === "ArrowRight") {
+            document.getElementById('modalNext').click();
+        }
+    }
+});
+</script>
+
+
 </body>
 </html>
