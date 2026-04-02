@@ -476,12 +476,20 @@ nav ul li a:hover {
 .Category-section {
     min-height: 100vh;
     background-color: #f3f3f3;
-    padding: 20px;
+    padding: 20px 20px 20px 50px; /* Increased left padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .Category-container {
-    max-width: 2000px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* This creates equal left and right margins */
+    padding: 0 15px; /* Add padding to prevent touching edges */
+    text-align: center;
+    box-sizing: border-box;
 }
 
 /* Category Title */
@@ -495,11 +503,33 @@ nav ul li a:hover {
     letter-spacing: 1px;
 }
 
+/* Fixed vertical text on the left side */
+.fixed-vertical-text {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-180deg); /* Rotates text upside down */
+    writing-mode: vertical-rl; /* Vertical writing mode */
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    color: #333;
+    z-index: 100;
+}
+
+
 /* Image Grid - images at their natural size */
 .image-grid {
     column-count: 2;           /* Creates 2 columns */
     column-gap: 20px;          /* Gap between columns */
+    max-width: 1900px;         
+    margin: 0 auto;            /* Centers the grid */
+    padding: 0 5px;
 }
+
+
+
 
 .grid-item {
     break-inside: avoid;       /* Prevents images from splitting across columns */
@@ -510,7 +540,6 @@ nav ul li a:hover {
     width: 100%;               /* Image fills the column width */
     height: auto;              /* Maintains aspect ratio */
     display: block;
-    border-radius: 4px;        /* Optional: rounded corners */
     transition: transform 0.3s ease;
 }
 
@@ -518,7 +547,6 @@ nav ul li a:hover {
     width: 100%;               /* Image fills the column width */
     height: auto;              /* Maintains aspect ratio */
     display: block;
-    border-radius: 4px;        /* Optional: rounded corners */
     transition: transform 0.3s ease;
 }
 
@@ -992,7 +1020,7 @@ nav ul li a:hover {
 @media (max-width: 768px) {
     .image-grid {
         column-count: 2 !important;  /* Force 1 column on mobile */
-        column-gap: 0;
+        column-gap: 10px;
     }
     
     .grid-item {
